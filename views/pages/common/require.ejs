@@ -1,0 +1,15 @@
+<script src="/public/js/require.js"></script>
+<script type="text/javascript">
+  require.config({
+    baseUrl: "",
+    // shim 配置 非AMD规范的模块文件加载
+    shim: {
+            <% for(var i = 0; i<r_data.length; i++) {%>
+            <% if (r_data[i + 1]) {%>
+              '<%= r_data[i+1] %>': ['<%= r_data[i] %>'],
+            <% }%>
+            <% }%>
+        }
+    });
+  require('<%= r_data %>'.split(','));
+</script>
